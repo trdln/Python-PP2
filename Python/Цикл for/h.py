@@ -1,7 +1,6 @@
 n = int(input())
-print("""   _~_    
-  (o o)   
- /  V  \  
-/(  _  )\ 
-  ^^ ^^   
-"""*n,end="")
+print("   _~_    " * n, sep="")
+print("  (o o)   " * n, sep="")
+print(" /  V  \  " * n, sep='')
+print("/(  _  )\ " * n, sep='')
+print("  ^^ ^^   " * n, sep='')
