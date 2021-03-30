@@ -5,6 +5,7 @@ pygame.init()
 
 #Разрешения окна
 RESx,RESy = 1200,780
+#RESx,RESy = 1700,1000
 
 #Окно
 win = pygame.display.set_mode((RESx,RESy))
@@ -16,7 +17,7 @@ red = (255,0,0)
 blue = (0,0,255)
 white = (255,255,255)
 #fonts
-font = pygame.font.SysFont('serif', 30)
+font = pygame.font.SysFont('serif', int(RESx / 50))
 text1 = font.render("sinx", False,black)
 text2 = font.render("cosx",False,black)
 text3 = font.render('X',False,black)
@@ -90,35 +91,56 @@ def draw_line(win,x,y,y1):
     m = math.ceil((RESx * end - RESx * start) / 6)
     for i in range(m,int(RESx * end - RESx * start), m):
         if i == m * 4:
-            pygame.draw.line(win,black,(x[0] + i,x[1] + m / 2) ,(y1[0] + i,y1[1]),1)
+            if RESx < 1200:
+                pygame.draw.line(win,black,(x[0] + i,x[1] + m / (1.5 + RESx / 1200)) ,(y1[0] + i,y1[1]),1)
+            else:
+                pygame.draw.line(win,black,(x[0] + i,x[1] + m / (1 + RESx / 1200)) ,(y1[0] + i,y1[1]),1)
         else:
             pygame.draw.line(win,black,(x[0] + i,x[1]) ,(y1[0] + i,y1[1]),1)
 
-    win.blit(text1,(x[0] + m * 4 - 20,x[1]))
-    win.blit(text2,(x[0] + m * 4 - 20,x[1] + 30))
-    pygame.draw.line(win, red, (x[0] + m * 4 + 40,x[1] + 18),(x[0] + m * 4 + 70,x[1] + 18))
-    draw_dashed_line(win,blue,(x[0] + m * 4 + 40,x[1] + 50),(x[0] + m * 4 + 70,x[1] + 50),2)
-    win.blit(text3,(RESx/2 - 8,RESy * end + 60))
+    win.blit(text1,(x[0] + m * 4 - RESx / 60,x[1]))
+    win.blit(text2,(x[0] + m * 4 - RESx / 60,x[1] + RESx / 40))
+    pygame.draw.line(win, red, (x[0] + m * 4 + RESx / 30,x[1] + RESx / 66),(x[0] + m * 4 + RESx / 17,x[1] + RESx / 66))
+    draw_dashed_line(win,blue,(x[0] + m * 4 + RESx / 30,x[1] + RESx / 24),(x[0] + m * 4 + RESx / 17,x[1] + RESx / 24),2)
+    win.blit(text3,(RESx/2 - RESx / 150,RESy * end + RESx / 20))
     
     x_val = ['-3п','-5п','-2п','-3п','-п','-п','0','п','п','3п','2п','5п','3п']
     x_val2 = ['',' 2','',' 2','',' 2','','2','','2','','2','']
     val = ['',' _','',' _','',' _','','_','','_','','_','']
-
+    
     y_val = [' 1.00',' 0.75',' 0.50',' 0.25',' 0.00','-0.25','-0.50','-0.75','-1.00']
     j = 0
     for i in range(len(x_val)):
         text4 = font.render(x_val[i],False,black)
         text5 = font.render(x_val2[i],False,black)
         text6 = font.render(val[i],False,black)
-        win.blit(text4,(RESx * start + j ,RESy * end + 20))
-        win.blit(text5,(RESx * start + j ,RESy * end + 50))
-        win.blit(text6,(RESx * start + j ,RESy * end + 20))
-        j+=k
+        win.blit(text4,(RESx * start + j ,  RESy * end + 20 ))
+        win.blit(text5,(RESx * start + j ,  RESy * end + 50 ))
+        win.blit(text6,(RESx * start + j ,  RESy * end + 20 ))
+        j+= (m/2) - 1
     j = 0
     for i in range(len(y_val)):
         text4 = font.render(y_val[i],False,black)
-        win.blit(text4,(RESx * start - 90,RESy * start + j - 15))
+        win.blit(text4,(RESx * start - RESx / 12,RESy * start + j - RESx / 80))
         j+=k
+def draw_little_hor(x,y,h,m,l):
+    s = math.ceil((RESx * end - RESx * start) / 6) / 8
+    for i in range(0,48,4):
+        pygame.draw.line(win, black, (x + s * i,y + h), (x + s * i,y + l),1)
+    for i in range(0,48,2):
+        pygame.draw.line(win, black, (x + s * i,y + h), (x + s * i,y + m),1)
+    for i in range(0,48):
+        pygame.draw.line(win, black, (x + s * i,y + h), (x + s * i,y + l+m),1)
+
+def draw_little_ver(x,y,h,m,l):
+    s = math.ceil((RESy * end - RESy * start) / 8) / 4
+    for i in range(0,32,4):
+        pygame.draw.line(win, black, (x + h,y + s * i), (x + l,y +s * i ),1)
+    for i in range(0,32,2):
+        pygame.draw.line(win, black, (x + h,y + s * i), (x + m,y + s * i),1)
+    for i in range(0,32):
+        pygame.draw.line(win, black, (x + h,y + s * i), (x + l+m,y + s * i),1)
+
 #Получаем все точки синуса и косинуса
 sin_points = get_points(math.sin , xrange, step, kx, ky , center)
 cos_points = get_points(math.cos , xrange, step, kx, ky , center)
@@ -137,6 +159,10 @@ while run:
         (start * RESx , end * RESy)
     )
     bb = 20
+    draw_little_hor(start * RESx, start * RESy,-20,-10,-5)
+    draw_little_hor(start * RESx , end * RESy,20,10,5)
+    draw_little_ver(start * RESx, start * RESy,-20,-10,-5)
+    draw_little_ver(end * RESx, start * RESy,20,10,5)
     #Рисуем рамку
     #pygame.draw.aalines(win , black, True, bounding_points, 4) #alternative method
     #pygame.draw.rect(win, black, [RESx * start, RESy* start, RESx * k, RESy * k], 1)
