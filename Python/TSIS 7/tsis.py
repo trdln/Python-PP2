@@ -4,7 +4,7 @@ import math
 pygame.init()
 # Разрешения окна
 # ! Есть возможность изменения разрешения ! не прям точный, но +- работающий
-RESx, RESy = 1200, 780
+RESx, RESy = 1200, 800
 #RESx,RESy = 800,600
 cnt = (1200 / RESx) / (780 / RESy)
 # Окно
@@ -36,8 +36,9 @@ step = 0.1
 kx = (k * RESx) / (6 * pi)
 ky = (k * RESy) / 2
 # Координаты центра чтобы позже просто подвинуть графики к центру
-center = (RESx//2, RESy//2)
-
+center = (RESx/2, RESy/2)
+real_center = math.ceil((RESx * end - RESx * start) * 3 / 4)
+real_center_y = math.ceil((RESy * end - RESy * start) * 3 / 4)
 # Код для дэш лайна от Бейсенбек Агая
 
 
@@ -149,12 +150,12 @@ def draw_little_ver(x, y, h, m, l):
 
 
 # Получаем все точки синуса и косинуса
-sin_points = get_points(math.sin, xrange, step, kx, ky, center)
-cos_points = get_points(math.cos, xrange, step, kx, ky, center)
+sin_points = get_points(math.sin, xrange, step, kx, ky, (real_center  + 2,real_center_y))
+cos_points = get_points(math.cos, xrange, step, kx, ky, (real_center  + 2,real_center_y))
 while run:
     # Заполняем экран
     win.fill(white)
-    real_center = math.ceil((RESx * end - RESx * start) * 3 / 4)
+
     # Рисуем центральную линию координат
     pygame.draw.lines(win, black, False, ((RESx * start, RESy / 2),    (RESx * end, RESy / 2)),    2)
     pygame.draw.lines(win, black, False, ((real_center, RESy * start), (real_center, RESy * end)), 2)
