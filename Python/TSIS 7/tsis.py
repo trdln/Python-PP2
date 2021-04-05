@@ -95,9 +95,6 @@ def draw_line(win, x, y, y1):
     m = math.ceil((RESx * end - RESx * start) / 6)
     for i in range(m, int(RESx * end - RESx * start), m):
         if i == m * 4:
-            if RESy < 780:
-                pygame.draw.line(win, black, (x[0] + i, x[1] + m * cnt / 2), (y1[0] + i, y1[1]), 1)
-            else:
                 pygame.draw.line(win, black, (x[0] + i, x[1] + m * cnt / 2), (y1[0] + i, y1[1]), 1)
         else:
             pygame.draw.line(win, black, (x[0] + i, x[1]), (y1[0] + i, y1[1]), 1)
@@ -119,7 +116,7 @@ def draw_line(win, x, y, y1):
         text6 = font.render(val[i], False, black)
         win.blit(text4, (RESx * start + j,  RESy * end + RESy * cnt / 39))
         win.blit(text5, (RESx * start + j,  RESy * end + RESy * cnt / 20))
-        win.blit(text6, (RESx * start + j,  RESy * end + RESy * cnt / 39))
+        win.blit(text6, (RESx * start + j,  RESy * end + RESy * cnt / 39 - 2 ))
         j += (m/2) - 1
     j = 0
     for i in range(len(y_val)):
@@ -132,7 +129,10 @@ def draw_line(win, x, y, y1):
 def draw_little_hor(x, y, h, m, l):
     s = math.ceil((RESx * end - RESx * start) / 6) / 8
     for i in range(0, 48, 4):
-        pygame.draw.line(win, black, (x + s * i, y + h), (x + s * i, y + l), 1)
+        if h < 0:
+            pygame.draw.line(win, black, (x + s * i, y ), (x + s * i, y - 20), 1)
+        else:
+            pygame.draw.line(win, black, (x + s * i, y ), (x + s * i, y + 20), 1)
     for i in range(0, 48, 2):
         pygame.draw.line(win, black, (x + s * i, y + h), (x + s * i, y + m), 1)
     for i in range(0, 48):
@@ -142,7 +142,10 @@ def draw_little_hor(x, y, h, m, l):
 def draw_little_ver(x, y, h, m, l):
     s = math.ceil((RESy * end - RESy * start) / 8) / 4
     for i in range(0, 32, 4):
-        pygame.draw.line(win, black, (x + h, y + s * i), (x + l, y + s * i), 1)
+        if h < 0:
+            pygame.draw.line(win, black, (x - 20, y + s * i), (x , y + s * i), 1)
+        else:
+            pygame.draw.line(win, black, (x + 20, y + s * i), (x, y + s * i), 1)
     for i in range(0, 32, 2):
         pygame.draw.line(win, black, (x + h, y + s * i), (x + m, y + s * i), 1)
     for i in range(0, 32):
