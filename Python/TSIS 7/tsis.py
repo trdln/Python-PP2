@@ -163,12 +163,14 @@ while run:
     pygame.draw.lines(win, black, False, ((RESx * start, RESy / 2),    (RESx * end, RESy / 2)),    2)
     pygame.draw.lines(win, black, False, ((real_center, RESy * start), (real_center, RESy * end)), 2)
     # Точки уголков нашей рамки
+    '''
     bounding_points = (
         (start * RESx, start * RESy),
         (end * RESx, start * RESy),
         (end * RESx, end * RESy),
         (start * RESx, end * RESy)
     )
+    '''
     bb = 20
     draw_little_hor(start * RESx, start * RESy, -20, -10, -5)
     draw_little_hor(start * RESx, end   * RESy, 20, 10, 5)
