@@ -1,0 +1,4 @@
+1) Pygame
+2) All pictures : [Enemy[1-8].png] , Player[1-4].png, main.png (menu), coin.png, bar.png, AnimatedStreet.png
+3) All music : background.wav, coinsound.mp3, crash.wav
+4) Font: KA1.ttf (Karmatic Arcade)
