@@ -1,6 +1,7 @@
 #Imports
 import pygame
 import random
+import json
 pygame.init()
 #Setting up FPS 
 FPS = 60
@@ -247,7 +248,18 @@ while menu:
                         run = False
                         re_choose_car = False
                         #To close
-                
+                    if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                        p = True
+                        while p:
+                            for event in pygame.event.get():
+                                if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                                    p = False
+                                if event.type == pygame.QUIT:
+                                    menu = False
+                                    game_run = False
+                                    run = False
+                                    re_choose_car = False
+                                    p = False
                 #Draw background
                 #WIN.blit(background, (0,0))
                 anim_background()
