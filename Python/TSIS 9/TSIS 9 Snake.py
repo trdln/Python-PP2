@@ -1,6 +1,4 @@
-from tkinter.constants import TRUE
 import pygame
-import time
 import random
 
  

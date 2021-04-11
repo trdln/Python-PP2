@@ -1,7 +1,6 @@
 #Imports
 import pygame
 import random
-import json
 pygame.init()
 #Setting up FPS 
 FPS = 60
@@ -319,8 +318,6 @@ while menu:
                                 run = False
                                 game_run = False 
                                 re_choose_car = False
-                                # out = open('highscore.txt','w')
-                                # out.write(MAX_SCORE)
                             if event.type == pygame.KEYDOWN:
                                 if event.key == pygame.K_r:
                                     choose = True  
