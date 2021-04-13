@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="998d4994-82ea-4080-afae-6a9f56cb9a70" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1WbBs547CG0Cc0vGJoJtZisXq66" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Пин-Понг/GitHub Pong/Ping-Pong/Ping-Pong.py" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Python\Игры\Моя Игра\Zmeka" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Practis">
+    <configuration name="Ping-Pong" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Zmeka" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Пин-Понг/GitHub Pong/Ping-Pong" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Пин-Понг/GitHub Pong/Ping-Pong/Ping-Pong.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Practis" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Zmeka" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\DNS\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Practis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ZMEKA" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Zmeka" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\DNS\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ZMEKA.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Zmeka_OLD" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Zmeka" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\DNS\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Zmeka_OLD.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Zmeka" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\DNS\AppData\Local\Programs\Python\Python38-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Zmeka.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Practis" />
+      <item itemvalue="Python.Zmeka_OLD" />
+      <item itemvalue="Python.ZMEKA" />
+      <item itemvalue="Python.Ping-Pong" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="998d4994-82ea-4080-afae-6a9f56cb9a70" name="Default Changelist" comment="" />
+      <created>1579408618232</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579408618232</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="521" y="199" key="#Notifications" timestamp="1579551494194">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="521" y="199" key="#Notifications/0.0.1858.1080@0.0.1858.1080" timestamp="1579551494194" />
+    <state x="383" y="199" width="1092" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579758499628">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="383" y="199" width="1092" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1579758499628" />
+    <state x="748" y="448" key="#com.jetbrains.python.refactoring.move.PyMakeFunctionTopLevelDialog" timestamp="1579428698870">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="748" y="448" key="#com.jetbrains.python.refactoring.move.PyMakeFunctionTopLevelDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1579428698870" />
+    <state x="709" y="299" key="FileChooserDialogImpl" timestamp="1579758495587">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="709" y="299" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1579758495587" />
+    <state width="1837" height="150" key="GridCell.Tab.0.bottom" timestamp="1579880014659">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="150" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1579880014659" />
+    <state width="1837" height="150" key="GridCell.Tab.0.center" timestamp="1579880014659">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="150" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1579880014659" />
+    <state width="1837" height="150" key="GridCell.Tab.0.left" timestamp="1579880014659">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="150" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1579880014659" />
+    <state width="1837" height="150" key="GridCell.Tab.0.right" timestamp="1579880014659">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="150" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1579880014659" />
+    <state width="1837" height="150" key="GridCell.Tab.1.bottom" timestamp="1579880014660">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="150" key="GridCell.Tab.1.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1579880014660" />
+    <state width="1837" height="150" key="GridCell.Tab.1.center" timestamp="1579880014659">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="150" key="GridCell.Tab.1.center/0.0.1858.1080@0.0.1858.1080" timestamp="1579880014659" />
+    <state width="1837" height="150" key="GridCell.Tab.1.left" timestamp="1579880014659">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="150" key="GridCell.Tab.1.left/0.0.1858.1080@0.0.1858.1080" timestamp="1579880014659" />
+    <state width="1837" height="150" key="GridCell.Tab.1.right" timestamp="1579880014660">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="1837" height="150" key="GridCell.Tab.1.right/0.0.1858.1080@0.0.1858.1080" timestamp="1579880014660" />
+    <state x="416" y="259" key="SettingsEditor" timestamp="1579689868848">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="416" y="259" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1579689868848" />
+    <state x="637" y="369" key="com.intellij.ide.util.TipDialog" timestamp="1579464680593">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="637" y="369" key="com.intellij.ide.util.TipDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1579464680593" />
+    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1579699012344">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="592" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1579699012344" />
+  </component>
+</project>
