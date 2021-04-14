@@ -1,7 +1,8 @@
 import pygame
 import random
+import time
+import pickle
 
- 
 pygame.init()
  
 WHITE = (255, 255, 255)
@@ -10,7 +11,6 @@ BLACK = (0, 0, 0)
 RED = (213, 50, 80)
 GREEN = (0, 255, 0)
 BLUE = (50, 153, 213)
-move_rules = {}
 RESx = 600
 RESy = 600
  
@@ -19,16 +19,16 @@ pygame.display.set_caption('Snake')
  
 FramePerSecond = pygame.time.Clock()
  
-snake_block = 30
-snake_speed = 12
+snake_block = 25
+snake_speed = 10
  
 font_style = pygame.font.Font("Materials/KA1.ttf", 30)
 score_font = pygame.font.Font("Materials/KA1.ttf", 30)
 
 
-def show_score(score):
-    value = score_font.render(f"Score: {score}" , True, BLACK)
-    pos = value.get_rect(center=(130,650))
+def show_score(score,name,y):
+    value = score_font.render(f"Score {name}: {score}" , True, BLACK)
+    pos = value.get_rect(center=(130,630 + y))
     WIN.blit(value, pos)
 
 def show_high_score(max_score):
@@ -37,15 +37,16 @@ def show_high_score(max_score):
     WIN.blit(value, pos)
 
 class Snake(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self,coordinates):
         super().__init__()
-        self.x, self.y = RESx / 2, RESy / 2
+        self.crd = coordinates
+        self.x, self.y = map(int, self.crd)
         self.dx,self.dy = 0 , 0
         self.l = 1
         self.list = []
  
     def restart(self):
-        self.x, self.y = RESx / 2, RESy / 2
+        self.x, self.y = map(int, self.crd)
         self.dx,self.dy = 0 , 0
         self.l = 1
         self.list = []
@@ -55,22 +56,48 @@ class Snake(pygame.sprite.Sprite):
             pygame.draw.rect(WIN, colour, [x[0], x[1], snake_block, snake_block])
             
     
-    def move(self,keys):
-        global move_rules
-        if (keys[pygame.K_LEFT] or keys[pygame.K_a]) and move_rules['A']:
+    def move1(self,keys,buttons):
+        global move_rules1
+        if (keys[buttons["A"]]) and move_rules1['A']:
                 self.dx,self.dy = -snake_block, 0
-                move_rules = {'W':True , 'S':True , 'A':True , 'D':False }
-        if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and move_rules['D']:
+                move_rules1 = {'W':True , 'S':True , 'A':True , 'D':False }
+        if (keys[buttons["D"]]) and move_rules1['D']:
                 self.dx,self.dy =  snake_block, 0
-                move_rules = {'W':True , 'S':True , 'A':False , 'D':True }
-        if (keys[pygame.K_UP] or keys[pygame.K_w]) and move_rules['W']:
+                move_rules1 = {'W':True , 'S':True , 'A':False , 'D':True }
+        if (keys[buttons["W"]]) and move_rules1['W']:
                 self.dx,self.dy = 0, -snake_block
-                move_rules = {'W':True , 'S':False , 'A':True , 'D':True }
-        if (keys[pygame.K_DOWN] or keys[pygame.K_s]) and move_rules['S']:
-                self.dx,self.dy = 0, snake_block
-                move_rules = {'W':False , 'S':True , 'A':True , 'D':True }
+                move_rules1 = {'W':True , 'S':False , 'A':True , 'D':True }
+        if (keys[buttons["S"]]) and move_rules1['S']:
+                self.dx,self.dy = 0, snake_block 
+                move_rules1 = {'W':False , 'S':True , 'A':True , 'D':True }
         self.x += self.dx
-        self.y +=self.dy
+        self.y += self.dy
+    def move2(self,keys,buttons):
+        global move_rules2
+        if (keys[buttons["A"]]) and move_rules2['A']:
+                self.dx,self.dy = -snake_block, 0
+                move_rules2 = {'W':True , 'S':True , 'A':True , 'D':False }
+        if (keys[buttons["D"]]) and move_rules2['D']:
+                self.dx,self.dy =  snake_block, 0
+                move_rules2 = {'W':True , 'S':True , 'A':False , 'D':True }
+        if (keys[buttons["W"]]) and move_rules2['W']:
+                self.dx,self.dy = 0, -snake_block
+                move_rules2 = {'W':True , 'S':False , 'A':True , 'D':True }
+        if (keys[buttons["S"]]) and move_rules2['S']:
+                self.dx,self.dy = 0, snake_block 
+                move_rules2 = {'W':False , 'S':True , 'A':True , 'D':True }
+        self.x += self.dx
+        self.y += self.dy
+
+def check_walls(snake_x,snake_y,level_counter,list):
+    global lost
+    if level_counter == 0:
+        if snake_x >= RESx or snake_x < 0 or snake_y >= RESy or snake_y < 0:
+            lost = True
+    for i in list:
+        if i[0] == snake_x and i[1] == snake_y:
+            lost = True
+        
 
 class Food(pygame.sprite.Sprite):
     def __init__(self):
@@ -82,17 +109,48 @@ class Food(pygame.sprite.Sprite):
     def restart(self):
         self.x = round(random.randrange(snake_block * 2, RESx - snake_block * 2) / float(snake_block)) * float(snake_block)
         self.y = round(random.randrange(snake_block * 2, RESy - snake_block * 2) / float(snake_block)) * float(snake_block)
+def check_eat(player, food, snake_list, wall_list):
+    if player.x == food.x and player.y == food.y:
+        food.restart()
+        player.l += 1
+        #Apple doesn't appear in Snake:
+    for xy in snake_list:
+        if xy == (food.x,food.y):
+            food.restart()
+    for xy in wall_list:
+        if xy == (food.x,food.y):
+            food.restart()
 
+def check_itself(snake_list,snake_x ,snake_y):
+    global lost
+    for x in snake_list[:-1]:
+        if x == (snake_x,snake_y):
+            lost = True
+def check_two_snakes(snake_list1,snake_list2):
+    global lost
+    for i in snake_list1:
+        for j in snake_list2:
+            if i == j:
+                lost = True
+
+def check_length(snake_list , snake_l):
+    if len(snake_list) > snake_l:
+        del snake_list[0]
+
+def restart_all_class(snake1,snake2,food):
+    global game_over,run
+    snake1.restart()
+    snake2.restart()
+    food.restart()
+    game_over = True
+    run = True
 class Walls(pygame.sprite.Sprite):
-    def __init__(self,x,y,width,height):
+    def __init__(self,width,height):
         super().__init__()
-        self.x, self.y = x,y
         self.w, self.h = width , height
-    def draw(self):
-        pygame.draw.rect(WIN,RED, [self.x,self.y,self.w,self.h] )
+        self.list = []
+        self.image = pygame.image.load("Materials/wall.png")
         
-
-
 def message(msg, color,y = 100):
     mesg = font_style.render(msg, True, color)
     pos = mesg.get_rect(center=(RESx // 2, (RESy  + y - 100) // 2))
@@ -101,6 +159,8 @@ def message(msg, color,y = 100):
 #MAX_SCORE = int(open('h.txt','r').read()) #Global Highscore 
 MAX_SCORE = 0 #Highscore of current session
 menu = True
+upgrade_cnt = 15
+level_counter = 0
 while menu:
     back_menu = True
     background = pygame.image.load("Materials/background.png")
@@ -120,19 +180,21 @@ while menu:
                 run = True
                 back_menu = False
                 
-    snake1 = Snake()
+    snake1 = Snake((RESx/2 + 2 * snake_block,RESy/2))
+    snake2 = Snake((RESx/2 - 3 * snake_block,RESy/2))
     food = Food()
-    d_wall = Walls(0, RESy - snake_block , RESx , snake_block)
-    r_wall = Walls(0,0,snake_block, RESy)
-    l_wall = Walls(RESx - snake_block,0,snake_block,RESy)
-    u_wall = Walls(0,0,RESx,snake_block)
-    wl = pygame.sprite.Group()
-    wl.add(u_wall)
+    wall = Walls(snake_block , snake_block)
+    level_names = ["lvl1.txt","lvl2.txt","lvl3.txt","lvl4.txt","lvl5.txt"]
+    walls_point = []
     while run:
-        move_rules = {'W':True , 'S':True , 'A':True , 'D':True }
+        move_rules1 = {'W':True , 'S':True , 'A':True , 'D':True }
+        move_rules2 = {'W':True , 'S':True , 'A':True , 'D':True }
         game_over = False
         lost = False
-        snake_List = []
+        snake_List1 = []
+        snake_List2 = []
+        walls_point = []
+        time.sleep(1)
         while not game_over:
             
             for event in pygame.event.get():
@@ -155,57 +217,65 @@ while menu:
                                     pause=False
 
             keys = pygame.key.get_pressed()
-            snake1.move(keys)
+            buttons1 = {"A" : pygame.K_a , "D" : pygame.K_d, "W" : pygame.K_w , "S" : pygame.K_s}
+            buttons2 = {"A" : pygame.K_LEFT , "D" : pygame.K_RIGHT, "W" : pygame.K_UP , "S" : pygame.K_DOWN}
+            snake1.move1(keys,buttons1)
+            snake2.move2(keys,buttons2)
             
             pygame.draw.rect(WIN,BLUE,[0,0,600,600])
             pygame.draw.rect(WIN,WHITE,[0,600,600,100])
 
             food.draw()
+            snake1.draw(snake_block, snake_List1 , BLACK)
+            snake2.draw(snake_block, snake_List2 , WHITE)
+            snake_List1.append((snake1.x,snake1.y))
+            snake_List2.append((snake2.x,snake2.y))
 
-            snake1.draw(snake_block, snake_List , BLACK)
-            snake_List.append((snake1.x,snake1.y))
+            check_length(snake_List1,snake1.l)
+            check_length(snake_List2,snake2.l)
 
-            if snake1.x >= RESx - snake_block  or snake1.x < 0 + snake_block or snake1.y >= RESy - snake_block  or snake1.y < 0 + snake_block:
-                lost = True
-            if len(snake_List) > snake1.l:
-                del snake_List[0]
-
-            for x in snake_List[:-1]:
-                if x == (snake1.x,snake1.y):
-                    lost = True
-    
+            check_itself(snake_List1,snake1.x,snake1.y)
+            check_itself(snake_List2,snake2.x,snake2.y)
             
+            check_two_snakes(snake_List1,snake_List2)
 
-            u_wall.draw()
-            d_wall.draw()
-            r_wall.draw()
-            l_wall.draw()
+            #if snake1.l + upgrade_cnt * level_counter > upgrade_cnt * (level_counter + 1) or snake2.l + upgrade_cnt * level_counter > upgrade_cnt * (level_counter + 1):
+            if snake1.l  - 1 + upgrade_cnt * level_counter > upgrade_cnt * (level_counter + 1) or snake2.l - 1+ upgrade_cnt * level_counter > upgrade_cnt * (level_counter + 1):
+                level_counter += 1
+                restart_all_class(snake1,snake2,food)
 
+            file = open(level_names[level_counter],'r').readlines()
+            for i in range(len(file)):
+                for j in range(len(file[i])):
+                    if file[i][j] == "#":
+                        #pygame.draw.rect(WIN,RED, [j * snake_block,i * snake_block,snake_block,snake_block])
+                        WIN.blit(wall.image , (j * snake_block,i * snake_block))
+                        walls_point.append((j * snake_block,i * snake_block))
+
+            check_walls(snake1.x,snake1.y,level_counter,walls_point)
+            check_walls(snake2.x,snake2.y,level_counter,walls_point)
             
+            show_score(snake1.l - 1, "P1" , 0)
+            show_score(snake2.l - 1, "P2" , 40)
 
-            
-            show_score(snake1.l - 1)
             show_high_score(MAX_SCORE)
 
-            pygame.display.update()
-            if snake1.x == food.x and snake1.y == food.y:
-                food.restart()
-                snake1.l += 1
-                #Apple doesn't appear in Snake:
-                for xy in snake_List:
-                    if xy == (food.x,food.y):
-                        food.restart()
+            
+            check_eat(snake1, food, snake_List1,walls_point)
+            check_eat(snake2, food, snake_List2,walls_point)
 
-
+            pygame.display.flip()
             while lost:
-                if MAX_SCORE < snake1.l - 1:
-                    MAX_SCORE = snake1.l - 1
+                if MAX_SCORE < snake1.l - 1 + upgrade_cnt * level_counter:
+                    MAX_SCORE = snake1.l - 1 + upgrade_cnt * level_counter
+                if MAX_SCORE < snake2.l - 1 + upgrade_cnt * level_counter: 
+                    MAX_SCORE = snake2.l - 1 + upgrade_cnt * level_counter
                 message("You Lost!", RED,0)
                 message("R to restart",RED,80)
                 message("Q to menu",RED,160)
-                show_score(snake1.l - 1)
+                show_score(snake1.l - 1,"P1" , 0)
+                show_score(snake2.l - 1,"P2" , 40)
                 pygame.display.update()
-    
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_q:
@@ -214,10 +284,10 @@ while menu:
                             back_menu = True
                             lost = False
                         if event.key == pygame.K_r:
-                            snake1.restart()
-                            food.restart()
-                            game_over = True
-                            run = True
+                            walls_point = []
+                            level_counter = 0
+                            file = ""
+                            restart_all_class(snake1,snake2,food)
                             lost = False
                     if event.type == pygame.QUIT:
                         txt_i = open('h.txt','r').read()
